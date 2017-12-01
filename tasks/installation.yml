@@ -5,7 +5,8 @@
   unarchive:
     src: '{{ nextcloud_repo_url  }}/nextcloud-{{ nextcloud_version }}.tar.bz2'
     remote_src: true
-    dest: '{{ nextcloud_web_root }}/..'
+    dest: '{{ nextcloud_web_root }}'
+    extra_opts: --strip-components=1
 
 - import_tasks: 'permissions.yml'
 
