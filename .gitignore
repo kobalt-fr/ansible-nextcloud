@@ -1,0 +1,6 @@
+# molecule
+.cache/
+.molecule/
+
+# python
+__pycache__/

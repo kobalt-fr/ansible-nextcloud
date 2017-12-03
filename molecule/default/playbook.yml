@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: ansible-nextcloud
+      vars:
+        nextcloud_web_root: /opt/not-nextcloud

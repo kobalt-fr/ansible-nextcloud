@@ -1,0 +1,30 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+  enabled: false
+platforms:
+  - name: m-centos7
+    image: centos:7
+    privileged: true
+    command: /sbin/init
+    volume_mounts:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:rw"
+provisioner:
+  name: ansible
+  playbooks:
+    create: ../default/create.yml
+    destroy: ../default/destroy.yml
+    prepare: prepare.yml
+    converge: playbook.yml
+  lint:
+    name: ansible-lint
+    enabled: false
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
+    enabled: false
