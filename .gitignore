@@ -1,6 +1,7 @@
 # molecule
 .cache/
 .molecule/
+*.log
 
 # python
 __pycache__/
