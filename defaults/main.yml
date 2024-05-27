@@ -15,6 +15,7 @@ nextcloud_ssl_key: /etc/nginx/nextcloud.key
 nextcloud_ssl_skip_gen: no
 nextcloud_ssl_subject: '/C=CH/ST=Lucerne/L=Lucerne/CN={{ nextcloud_domain }}'
 nextcloud_web_root: /var/www/nextcloud
+nextcloud_web_maintenance_window_start: 100
 nextcloud_data_root: /nextcloud/data
 nextcloud_admin_user: admin
 nextcloud_admin_pw: admin
@@ -33,3 +34,4 @@ nextcloud_crypto_config: intermediate
 nextcloud_php_session_save_path: /var/lib/php/nextcloud/session
 nextcloud_php_soap_wsdl_cache_dir: /var/lib/php/nextcloud/wsdlcache
 nextcloud_php_opcache_file_cache: /var/lib/php/nextcloud/opcache
+nextcloud_php_opcache_interned_strings_buffer: 8

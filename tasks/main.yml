@@ -227,6 +227,7 @@
     - { option: 'session.save_path', value: '{{ nextcloud_php_session_save_path }}' }
     - { option: 'soap.wsdl_cache_dir', value: '{{ nextcloud_php_soap_wsdl_cache_dir }}' }
     - { option: 'opcache.file_cache', value: '{{ nextcloud_php_opcache_file_cache }}' }
+    - { option: 'opcache.interned_strings_buffer', value: '{{ nextcloud_php_opcache_interned_strings_buffer }}' }
   notify:
     - reload php-fpm
     - reload nginx
@@ -257,6 +258,10 @@
     - regexp: '^;?php_value\[opcache\.file_cache\]\s*='
       option: 'php_value[opcache.file_cache]'
       value: '{{ nextcloud_php_opcache_file_cache }}'
+    # php_value[opcache.interned_strings_buffer]
+    - regexp: '^;?php_value\[opcache\.interned_strings_buffer\]\s*='
+      option: 'php_value[opcache.interned_strings_buffer]'
+      value: '{{ nextcloud_php_opcache_interned_strings_buffer }}'
   notify: reload php-fpm
 
 - name: ensure pdo_mysql.ini config is present
@@ -446,6 +451,12 @@
 
 - name: performance tuning - ensure Nextcloud uses cron
   command: 'php {{ nextcloud_web_root }}/occ background:cron'
+  become: true
+  become_user: nginx
+  changed_when: no
+
+- name: performance tuning - ensure Nextcloud use maintenance window
+  command: 'php {{ nextcloud_web_root }}/occ config:system:set maintenance_window_start --type=integer --value={{ nextcloud_web_maintenance_window_start }}'
   become: true
   become_user: nginx
   changed_when: no
