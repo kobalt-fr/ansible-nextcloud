@@ -58,6 +58,7 @@ nextcloud_config_options: # additional options to set in config.php
  - { option: mail_smtpname, value: "'john.smith'" }
  - { option: mail_smtppassword, value: "'secret123'" }
 nextcloud_crypto_config: intermediate  # modern, intermediate or old crypto config
+nextcloud_php_opcache_interned_strings_buffer: 8 # opcache.interned_strings_buffer in php.ini
 
 ```
 
