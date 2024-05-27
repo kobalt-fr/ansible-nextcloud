@@ -455,6 +455,12 @@
   become_user: nginx
   changed_when: no
 
+- name: performance tuning - ensure Nextcloud use maintenance window
+  command: 'php {{ nextcloud_web_root }}/occ config:system:set maintenance_window_start --type=integer --value={{ nextcloud_web_maintenance_window_start }}'
+  become: true
+  become_user: nginx
+  changed_when: no
+
 - name: performance tuning - set logrotate location
   command: 'php {{ nextcloud_web_root }}/occ config:system:set logfile --value "/var/log/nextcloud/nextcloud.log"'
   become: true

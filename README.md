@@ -30,6 +30,7 @@ nextcloud_ssl_key: /etc/nginx/nextcloud.key # ssl key path
 nextcloud_ssl_skip_gen: false # set to true if you do NOT want role to handle ssl cert generation (then you must provide nextcloud_ssl_* configured files)
 nextcloud_ssl_subject: '/C=CH/ST=Lucerne/L=Lucerne/CN={{ nextcloud_domain }}' # subject for self-signed ssl cert generation
 nextcloud_web_root: /var/www/nextcloud # web root
+nextcloud_web_maintenance_window_start: 100 # nextcloud maintenance window start, choose any from https://docs.nextcloud.com/server/29/admin_manual/configuration_server/background_jobs_configuration.html#parameters
 nextcloud_data_root: '/nextcloud/data'
 nextcloud_admin_user: admin # nextcloud admin username
 nextcloud_admin_pw: admin # nextcloud admin password
